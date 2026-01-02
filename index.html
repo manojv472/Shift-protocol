@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Shift Protocol: Lifestyle Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0D1117">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
+      
+      :root {
+        --neon-green: #00FF41;
+        --secondary-green: #39FF14;
+        --cyan: #00D9FF;
+        --warning: #FF2E88;
+        --bg-dark: #0D1117;
+        --panel-dark: #0F1623;
+        --text-primary: #E6FBEA;
+        --glow-strength: 1;
+        /* Custom spring physics easing */
+        --spring-easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --quint-out: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-primary);
+        font-family: 'Inter', sans-serif;
+        overscroll-behavior-y: auto;
+        font-size: 16px;
+        -webkit-tap-highlight-color: transparent;
+        height: 100vh;
+        overflow: hidden;
+        letter-spacing: -0.01em;
+      }
+
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      .neon-glow {
+        box-shadow: 0 0 calc(10px * var(--glow-strength)) rgba(0, 255, 65, calc(0.2 * var(--glow-strength)));
+      }
+
+      .neon-text {
+        text-shadow: 0 0 calc(8px * var(--glow-strength)) rgba(0, 255, 65, calc(0.5 * var(--glow-strength)));
+      }
+
+      /* Typography scales */
+      .text-[8px] { font-size: 0.75rem !important; }
+      .text-[9px] { font-size: 0.85rem !important; }
+      .text-[10px] { font-size: 0.95rem !important; }
+      .text-xs { font-size: 1.05rem !important; }
+      .text-sm { font-size: 1.2rem !important; }
+      .text-base { font-size: 1.35rem !important; }
+      .text-lg { font-size: 1.5rem !important; }
+      .text-xl { font-size: 1.75rem !important; }
+      .text-2xl { font-size: 2.1rem !important; }
+      .text-3xl { font-size: 2.6rem !important; }
+
+      ::-webkit-scrollbar { display: none; }
+      body { -ms-overflow-style: none; scrollbar-width: none; }
+
+      .bottom-nav-blur {
+        backdrop-filter: blur(20px);
+        background-color: rgba(15, 22, 35, 0.92);
+      }
+
+      @keyframes spring-up {
+        0% { transform: translateY(30px) scale(0.92); opacity: 0; }
+        100% { transform: translateY(0) scale(1); opacity: 1; }
+      }
+      
+      @keyframes spring-slide {
+        0% { transform: translateX(20px); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+      }
+
+      .animate-spring-up {
+        animation: spring-up 0.6s var(--spring-easing) forwards;
+      }
+
+      .animate-spring-slide {
+        animation: spring-slide 0.5s var(--spring-easing) forwards;
+      }
+
+      @keyframes reveal-up {
+        from { transform: translateY(10px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .stagger-item {
+        opacity: 0;
+        animation: reveal-up 0.5s var(--quint-out) forwards;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(-4deg); }
+        50% { transform: translateY(-3px) rotate(-3deg); }
+      }
+      .animate-float {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      @keyframes glow-pulse {
+        0%, 100% { opacity: 1; filter: brightness(1); }
+        50% { opacity: 0.85; filter: brightness(1.15); }
+      }
+      .animate-glow-pulse {
+        animation: glow-pulse 2s infinite ease-in-out;
+      }
+
+      @keyframes progress-shimmer {
+        from { background-position: -200% 0; }
+        to { background-position: 200% 0; }
+      }
+      .shimmer {
+        background: linear-gradient(90deg, rgba(0,255,65,0.05) 25%, rgba(0,255,65,0.2) 50%, rgba(0,255,65,0.05) 75%);
+        background-size: 200% 100%;
+        animation: progress-shimmer 2.5s infinite linear;
+      }
+
+      .scroll-container {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+      }
+      
+      .active-press {
+        transition: transform 0.25s var(--spring-easing), filter 0.1s linear, background-color 0.2s ease;
+      }
+      .active-press:active {
+        transform: scale(0.94);
+        filter: brightness(1.1);
+      }
+      
+      .spring-hover:hover {
+        transform: translateY(-2px);
+      }
+
+      /* Schedule list transition container */
+      .shift-list-enter {
+        animation: spring-up 0.5s var(--spring-easing) both;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
